@@ -59,4 +59,4 @@ colorscheme	catppuccin-frappe
 :lcd %:p:h
 
 "source CoC Keybinds
-:so ./cocKeybinds.vim
+:so ~/Git/ConfigCrow/cocKeybinds.vim

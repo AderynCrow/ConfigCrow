@@ -27,6 +27,8 @@ Plug 'iamcco/markdown-preview.nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'andweeb/presence.nvim'
+Plug 'luochen1990/rainbow'
 call plug#end()
 
 
@@ -47,6 +49,21 @@ let g:lightline = {
       \ }
 
 
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+\	'guifgs': ['#8caaee', '#ef9f76', '#a6d189', '#e78284'],
+\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\	'guis': [''],
+\	'cterms': [''],
+\	'operators': '_,_',
+\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\	'separately': {
+\		'*': {},
+\		'markdown': {
+\			'parentheses_options': 'containedin=markdownCode contained',
+\		}
+\	}
+\}
 
 "set Colorscheme"
 syntax enable

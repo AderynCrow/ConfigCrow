@@ -1,3 +1,9 @@
+"TIPS :
+"To use System clipboard you need xclip installed (maybe wl-copy will work
+"too)
+"Install Markdown Preview :call mkdp#util#install()
+"
+"
 "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 

@@ -33,7 +33,7 @@ Plug 'iamcco/markdown-preview.nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-Plug 'andweeb/presence.nvim'
+"Plug 'jiriks74/presence.nvim'"
 Plug 'luochen1990/rainbow'
 call plug#end()
 
@@ -74,7 +74,9 @@ let g:rainbow_conf = {
 "set Colorscheme"
 syntax enable
 colorscheme	catppuccin-frappe
-
+"same background as terminal, allows for transparency"
+highlight Normal guibg=none
+highlight NonText guibg=none
 "autosave when cursor hasn't moved for 4 seconds"
 :autocmd CursorHold,CursorHoldI * silent! wall
 
@@ -83,3 +85,4 @@ colorscheme	catppuccin-frappe
 
 "source CoC Keybinds
 :so ~/Git/ConfigCrow/cocKeybinds.vim
+set runtimepath^=~/Git/coc-discord-rpc/src

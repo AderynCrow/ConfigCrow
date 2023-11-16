@@ -15,7 +15,7 @@ set autoindent
 set mouse=
 set nohlsearch
 set noshowmode
-
+set wrap linebreak
 "set title"
 :set title titlestring=%t titlelen=70
 
@@ -83,6 +83,16 @@ highlight NonText guibg=none
 "set working directory when opening via gui file explorer"
 :lcd %:p:h
 
+command Python !python3 %
+
+command Build call RunBuildScript()
+function! RunBuildScript()
+	if !empty(glob(getcwd() . "/build.sh"))
+		:!./build.sh
+	else
+		echo "no build.sh found!"
+	endif
+endfunction
+
 "source CoC Keybinds
 :so ~/Git/ConfigCrow/cocKeybinds.vim
-set runtimepath^=~/Git/coc-discord-rpc/src

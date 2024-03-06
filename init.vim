@@ -18,6 +18,8 @@ set noshowmode
 set wrap linebreak
 "set title"
 :set title titlestring=%t titlelen=70
+"exit Terminal mode with esc"
+:tnoremap <Esc> <C-\><C-n>
 
 "don't show matching parenthesies while in insert mode
 au InsertEnter * NoMatchParen 
@@ -26,14 +28,11 @@ au InsertLeave * DoMatchParen
 "vim-plug"
 call plug#begin()
 Plug 'tpope/vim-fugitive'
-Plug 'shapeoflambda/dark-purple.vim'
-Plug 'peit-uiberry/corvus-purple'
 Plug 'unblevable/quick-scope'
 Plug 'iamcco/markdown-preview.nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-"Plug 'jiriks74/presence.nvim'"
 Plug 'luochen1990/rainbow'
 call plug#end()
 
@@ -73,10 +72,24 @@ let g:rainbow_conf = {
 
 "set Colorscheme"
 syntax enable
-colorscheme	catppuccin-frappe
+if &term == "tmux-256color"
+    colorscheme OceanicNext
+	highlight Visual guibg=#FFFFFF
+else
+	colorscheme	catppuccin-macchiato
+endif
+if &term == "linux"
+	set notermguicolors
+    colorscheme OceanicNext
+	:source ~/Git/ConfigCrow/layout.vim
+	highlight Visual guibg=#0000FF
+	highlight Visual guifg=#000000
+endif
+
 "same background as terminal, allows for transparency"
 highlight Normal guibg=none
 highlight NonText guibg=none
+highlight LineNr guifg=#949cbb 
 "autosave when cursor hasn't moved for 4 seconds"
 :autocmd CursorHold,CursorHoldI * silent! wall
 
@@ -84,6 +97,7 @@ highlight NonText guibg=none
 :lcd %:p:h
 
 command Python !python3 %
+command Terminal silent !gnome-terminal
 
 command Build call RunBuildScript()
 function! RunBuildScript()
@@ -93,6 +107,8 @@ function! RunBuildScript()
 		echo "no build.sh found!"
 	endif
 endfunction
+
+
 
 "source CoC Keybinds
 :so ~/Git/ConfigCrow/cocKeybinds.vim
